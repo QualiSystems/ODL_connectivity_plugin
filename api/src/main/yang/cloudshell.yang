@@ -1,0 +1,20 @@
+module cloudshell {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:cloudshell";
+    prefix "cloudshell";
+
+    revision "2015-01-05" {
+        description "Initial revision of cloudshell model";
+    }
+
+    rpc create-route {
+        input {
+           leaf switch { type string; mandatory true; }
+           leaf port { type uint16; mandatory true; }
+           leaf route { type string; mandatory true; }
+        }
+        output {
+            leaf success { type boolean; default false; }
+        }
+    }
+}

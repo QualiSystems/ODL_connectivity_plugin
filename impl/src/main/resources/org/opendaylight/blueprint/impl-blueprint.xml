@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+Copyright © 2016 Qualisystems and others. All rights reserved.
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v1.0 which accompanies this distribution,
+and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+  xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0"
+  odl:use-default-for-reference-types="true">
+
+  <reference id="dataBroker"
+    interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
+    odl:type="default" />
+
+  <odl:rpc-service id="salFlowService"
+    interface="org.opendaylight.yang.gen.v1.urn.opendaylight.flow.service.rev130819.SalFlowService" />
+
+  <reference id="rpcRegistry"
+    interface="org.opendaylight.controller.sal.binding.api.RpcProviderRegistry"/>
+
+  <odl:action-service id="packetProcessingService"
+    interface="org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.PacketProcessingService"/>
+
+  <bean id="provider"
+    class="quali.impl.CloudshellProvider"
+    init-method="init" destroy-method="close">
+    <argument ref="dataBroker" />
+    <argument ref="rpcRegistry" />
+    <argument ref="salFlowService" />
+  </bean>
+
+  <bean id="PacketHandler"
+        class="quali.impl.PacketHandler"
+        init-method="init" destroy-method="close">
+    <argument ref="dataBroker" />
+    <argument ref="packetProcessingService" />
+  </bean>
+
+  <!--<service ref="PacketHandler" odl:type="default"-->
+    <!--interface="org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.PacketProcessingListener" />-->
+
+  <!--<odl:notification-listener ref="PacketHandler" />-->
+
+
+</blueprint>
