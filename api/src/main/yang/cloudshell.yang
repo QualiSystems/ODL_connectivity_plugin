@@ -9,11 +9,15 @@ module cloudshell {
 
     rpc create-route {
         input {
-           leaf switch { type string; mandatory true; }
-           leaf port { type uint16; mandatory true; }
            leaf src_mac { type string; mandatory true; }
            leaf dst_mac { type string; mandatory true; }
            leaf allow { type boolean; default true; }
+
+           list route {
+               leaf port_in { type uint16; mandatory true; }
+               leaf port_out { type uint16; mandatory true; }
+               leaf switch { type string; mandatory true; }
+           }
         }
         output {
             leaf success { type boolean; default false; }
