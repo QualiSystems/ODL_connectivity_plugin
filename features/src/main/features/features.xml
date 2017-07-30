@@ -19,6 +19,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
 
 
   <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/{{VERSION}}/xml/features</repository>
+  <repository>mvn:org.opendaylight.l2switch/features-l2switch/{{VERSION}}/xml/features</repository>
 
 
   <feature name='odl-cloudshell-api' version='${project.version}' description='OpenDaylight :: cloudshell :: api'>
@@ -27,6 +28,10 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   </feature>
   <feature name='odl-cloudshell' version='${project.version}' description='OpenDaylight :: cloudshell'>
     <feature version='${openflowplugin.version}'>odl-openflowplugin-flow-services</feature>
+
+    <!--<feature version='${l2switch.version}'>odl-l2switch-switch-ui</feature>-->
+
+
     <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
     <feature version='${project.version}'>odl-cloudshell-api</feature>
     <bundle>mvn:quali/cloudshell-impl/{{VERSION}}</bundle>

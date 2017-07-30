@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="Osmorc" name="OSGi">
-      <configuration manifestGenerationMode="OsmorcControlled" manifestLocation="" jarfileLocation="cloudshell-it-0.1.0-SNAPSHOT.jar" outputPathType="CompilerOutputPath" bndFileLocation="" bundlorFileLocation="" bundleActivator="" bundleSymbolicName="quali.cloudshell-it" bundleVersion="0.1.0.SNAPSHOT" ignoreFilePattern="" useProjectDefaultManifestFileLocation="true" alwaysRebuildBundleJAR="false" doNotSynchronizeWithMaven="false">
-        <additionalProperties>
-          <property key="Bundle-Description" value="OpenDaylight is leading the transformation to Open Software Defined Networking (SDN). For more information, please see https://www.opendaylight.org" />
-          <property key="Bundle-Vendor" value="OpenDaylight" />
-          <property key="Bundle-DocURL" value="https://www.opendaylight.org" />
-          <property key="Include-Resource" value="META-INF/git.properties=-target/classes/META-INF/git.properties" />
-          <property key="Bundle-Name" value="cloudshell-it" />
-        </additionalProperties>
-        <additionalJARContents />
-      </configuration>
-    </facet>
-  </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -158,7 +144,7 @@
     <orderEntry type="library" name="Maven: org.opendaylight.controller.model:model-inventory:1.4.3-Boron-SR3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.samples:clustering-it-model:1.4.3-Boron-SR3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.samples:clustering-it-provider:1.4.3-Boron-SR3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.eclipse.tycho:org.eclipse.osgi:3.9.1.v20130814-1242" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.tycho:org.eclipse.osgi:3.9.1.v20130814-1242" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.samples:sample-toaster:1.4.3-Boron-SR3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.samples:sample-toaster-consumer:1.4.3-Boron-SR3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.samples:sample-toaster-provider:1.4.3-Boron-SR3" level="project" />
@@ -323,41 +309,33 @@
     <orderEntry type="library" name="Maven: org.apache.karaf.jaas:org.apache.karaf.jaas.config:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.sshd:sshd-core:0.14.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.karaf.shell:org.apache.karaf.shell.table:3.0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-api:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-spi:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-impl:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflowjava-util:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.model:model-flow-base:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.model:model-flow-statistics:0.4.0-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-api:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-spi:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-impl:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflowjava-util:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.model:model-flow-base:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.model:model-flow-statistics:0.3.3-Boron-SR3" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller.model:model-topology:1.4.3-Boron-SR3" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-sync:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:inventory-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:lldp-speaker:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:statistics-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-blueprint-config:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflowjava-blueprint-config:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:nodes-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:sigmatopology-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:topology-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:yangman-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:yangvisualizer-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:yangui-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:yangutils-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-api:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-extension-api:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-impl:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:table-miss-enforcer:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:topology-lldp-discovery:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:topology-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:of-switch-config-pusher:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:drop-test-karaf:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:test-common:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.controller:liblldp:0.12.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-common:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:bulk-o-matic:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:notification-supplier:0.4.0-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-sync:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:inventory-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:lldp-speaker:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:statistics-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-blueprint-config:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-api:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-extension-api:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-impl:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:table-miss-enforcer:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:topology-lldp-discovery:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:topology-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:of-switch-config-pusher:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:drop-test-karaf:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:test-common:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:liblldp:0.11.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-common:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:bulk-o-matic:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:notification-supplier:0.3.3-Boron-SR3" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:mdsal-it-base:1.4.3-Boron-SR3" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:config-it-base:0.5.3-Boron-SR3" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:config-util:0.5.3-Boron-SR3" level="project" />

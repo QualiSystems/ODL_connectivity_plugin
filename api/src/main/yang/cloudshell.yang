@@ -11,7 +11,9 @@ module cloudshell {
         input {
            leaf switch { type string; mandatory true; }
            leaf port { type uint16; mandatory true; }
-           leaf route { type string; mandatory true; }
+           leaf src_mac { type string; mandatory true; }
+           leaf dst_mac { type string; mandatory true; }
+           leaf allow { type boolean; default true; }
         }
         output {
             leaf success { type boolean; default false; }

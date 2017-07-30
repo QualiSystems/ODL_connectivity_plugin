@@ -156,19 +156,41 @@ public class PacketHandler implements PacketProcessingListener {
     @Override
     public void onPacketReceived(PacketReceived packetReceived) {
 
+        synchronized (this) {
+
+
         Class<? extends PacketInReason> pktInReason = packetReceived.getPacketInReason();
+
+
+        // read src MAC and dst MAC
+        byte[] dstMacRaw = extractDstMac(packetReceived.getPayload());
+        byte[] srcMacRaw = extractSrcMac(packetReceived.getPayload());
+        byte[] etherType = extractEtherType(packetReceived.getPayload());
+
+
+        MacAddress dstMac = rawMacToMac(dstMacRaw);
+        MacAddress srcMac = rawMacToMac(srcMacRaw);
+//            NodeConnectorKey ingressKey = getNodeConnectorKey(packetReceived.getIngress().getValue());
+
+
+        System.out.println("Received packet from MAC match: " + srcMac);
+        System.out.println("Received packet to MAC match: " + dstMac);
+        System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
+
 
         // todo: check if can use instanceof instead!
         if (pktInReason == SendToController.class) {
 
-            // read src MAC and dst MAC
-            byte[] dstMacRaw = extractDstMac(packetReceived.getPayload());
-            byte[] srcMacRaw = extractSrcMac(packetReceived.getPayload());
-            byte[] etherType = extractEtherType(packetReceived.getPayload());
+            System.out.println("Received CONTROLLER NOTIFICATION !!!!!!!!!!!!");
 
-
-            MacAddress dstMac = rawMacToMac(dstMacRaw);
-            MacAddress srcMac = rawMacToMac(srcMacRaw);
+//            // read src MAC and dst MAC
+//            byte[] dstMacRaw = extractDstMac(packetReceived.getPayload());
+//            byte[] srcMacRaw = extractSrcMac(packetReceived.getPayload());
+//            byte[] etherType = extractEtherType(packetReceived.getPayload());
+//
+//
+//            MacAddress dstMac = rawMacToMac(dstMacRaw);
+//            MacAddress srcMac = rawMacToMac(srcMacRaw);
 //            NodeConnectorKey ingressKey = getNodeConnectorKey(packetReceived.getIngress().getValue());
 
 
@@ -262,7 +284,7 @@ public class PacketHandler implements PacketProcessingListener {
 //        Class<? extends PacketInReason> packedInReason = packetReceived.getPacketInReason();
 
 
-
+        }
 
 //
 //        packetReceived.getPayload();

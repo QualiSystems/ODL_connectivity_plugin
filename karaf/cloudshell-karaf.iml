@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -351,41 +351,33 @@
     <orderEntry type="module" module-name="cloudshell-api" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.mdsal:yang-binding:0.9.3-Boron-SR3" level="project" />
     <orderEntry type="module" module-name="cloudshell-cli" scope="RUNTIME" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-api:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-spi:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-impl:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflowjava-util:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.model:model-flow-base:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.model:model-flow-statistics:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.model:model-topology:1.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-sync:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:inventory-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:lldp-speaker:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:statistics-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-blueprint-config:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflowjava-blueprint-config:0.9.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:nodes-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:sigmatopology-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:topology-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:yangman-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:yangvisualizer-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:yangui-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.dluxapps:yangutils-bundle:0.5.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-api:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-extension-api:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-impl:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:table-miss-enforcer:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:topology-lldp-discovery:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:topology-manager:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:of-switch-config-pusher:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:drop-test-karaf:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:test-common:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller:liblldp:0.12.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-common:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:bulk-o-matic:0.4.0-Carbon" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:notification-supplier:0.4.0-Carbon" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-api:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-spi:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflow-protocol-impl:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowjava:openflowjava-util:0.8.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.model:model-flow-base:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.model:model-flow-statistics:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller.model:model-topology:1.4.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:forwardingrules-sync:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:inventory-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:lldp-speaker:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:statistics-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-blueprint-config:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-api:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-extension-api:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-impl:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:table-miss-enforcer:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:topology-lldp-discovery:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:topology-manager:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:of-switch-config-pusher:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:drop-test-karaf:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:test-common:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller:liblldp:0.11.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin:openflowplugin-common:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:bulk-o-matic:0.3.3-Boron-SR3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.openflowplugin.applications:notification-supplier:0.3.3-Boron-SR3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf.region:org.apache.karaf.region.persist:3.0.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.eclipse.equinox:region:1.0.0.v20110506" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.odlparent:karaf.branding:1.7.3-Boron-SR3" level="project" />
