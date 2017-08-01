@@ -82,6 +82,13 @@ public class PacketHandler implements PacketProcessingListener {
             System.out.println("################################################");
             System.out.println("PACKET NOTIFICATION");
             System.out.println("################################################");
+            NodeConnectorKey ingressKey = getNodeConnectorKey(packetReceived.getIngress().getValue());
+            String inPort = ingressKey.getId().getValue();
+
+            String[] inPortParts = inPort.split(":");
+            String switchId = inPortParts[0] + ":" + inPortParts[1];
+            Integer port = Integer.parseInt(inPortParts[2]);
+
 
 
             Class<? extends PacketInReason> pktInReason = packetReceived.getPacketInReason();
@@ -95,38 +102,51 @@ public class PacketHandler implements PacketProcessingListener {
             String dstMacVal = dstMac.getValue();
 
 
+            if (this.fileRouteProcessingService.isRouteExists(switchId, port)) {
+
+                System.out.println("################################################");
+                System.out.println("================== packet allowed ==============");
+                System.out.println("IN port connector: " + inPort);
+                System.out.println("Received packet from MAC match: " + srcMac);
+                System.out.println("Received packet to MAC match: " + dstMac);
+                System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
+                System.out.println("################################################");
+
+                List<Rule> rules = this.fileRouteProcessingService.getRouteRules(switchId, port);
+
+                for (Rule rule : rules) {
+                    this.flowProcessingService.createOutputActionFlow(rule.switchId, rule.portIn.intValue(),
+                            rule.portOut.intValue(), srcMacVal, dstMacVal);
+                }
+                return;
+
+            }
+
+
             if (Arrays.equals(ETH_TYPE_IPV4, etherType)) {
 
                 System.out.println("################################################");
                 System.out.println("ETH_TYPE_IPV4 PACKET NOTIFICATION");
                 System.out.println("################################################");
 
-
-                NodeConnectorKey ingressKey = getNodeConnectorKey(packetReceived.getIngress().getValue());
-                String inPort = ingressKey.getId().getValue();
-
-                String[] inPortParts = inPort.split(":");
-                String switchId = inPortParts[0] + ":" + inPortParts[1];
-                Integer port = Integer.parseInt(inPortParts[2]);
-
-                if (this.fileRouteProcessingService.isRouteExists(switchId, port)) {
-
-                    System.out.println("################################################");
-                    System.out.println("================== packet allowed ==============");
-                    System.out.println("IN port connector: " + inPort);
-                    System.out.println("Received packet from MAC match: " + srcMac);
-                    System.out.println("Received packet to MAC match: " + dstMac);
-                    System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
-                    System.out.println("################################################");
-
-                    List<Rule> rules = this.fileRouteProcessingService.getRouteRules(switchId, port);
-
-                    for (Rule rule : rules) {
-                        this.flowProcessingService.createOutputActionFlow(rule.switchId, rule.portIn.intValue(),
-                                rule.portOut.intValue(), srcMacVal, dstMacVal);
-                    }
-
-                } else {
+//                if (this.fileRouteProcessingService.isRouteExists(switchId, port)) {
+//
+//                    System.out.println("################################################");
+//                    System.out.println("================== packet allowed ==============");
+//                    System.out.println("IN port connector: " + inPort);
+//                    System.out.println("Received packet from MAC match: " + srcMac);
+//                    System.out.println("Received packet to MAC match: " + dstMac);
+//                    System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
+//                    System.out.println("################################################");
+//
+//                    List<Rule> rules = this.fileRouteProcessingService.getRouteRules(switchId, port);
+//
+//                    for (Rule rule : rules) {
+//                        this.flowProcessingService.createOutputActionFlow(rule.switchId, rule.portIn.intValue(),
+//                                rule.portOut.intValue(), srcMacVal, dstMacVal);
+//                    }
+//
+//                } else {
                     System.out.println("################################################");
                     System.out.println("================== PACKET BLOCKED ==============");
                     System.out.println("IN port connector: " + inPort);
@@ -137,7 +157,7 @@ public class PacketHandler implements PacketProcessingListener {
 
                     this.flowProcessingService.createDropActionFlow(switchId, port, srcMacVal, dstMacVal);
 
-                }
+//                }
             }
 
         } catch (Exception e) {
