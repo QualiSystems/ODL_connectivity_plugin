@@ -46,13 +46,21 @@ public class FileRouteProcessingService {
     }
 
     private void createRoutesDir() {
+        System.out.println("createRoutesDir !!!!: " + ROUTES_PATH);
         File routesDir = new File(ROUTES_PATH);
         // delete existing rotes on start
         if (routesDir.exists()) {
-            routesDir.delete();
-        }
+            System.out.println("FOLDER EXISTS !!!!: " + routesDir.toString() + "FULL PATH: " + routesDir.getAbsolutePath());
+            String[]entries = routesDir.list();
 
-        routesDir.mkdir();
+            for(String s: entries){
+                File currentFile = new File(routesDir.getPath(), s);
+                currentFile.delete();
+            }
+            routesDir.delete();
+        } else {
+            routesDir.mkdir();
+        }
     }
 
     private Boolean writeToFile(String fileName, String data) {

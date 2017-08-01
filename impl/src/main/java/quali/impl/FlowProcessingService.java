@@ -245,7 +245,10 @@ public class FlowProcessingService {
 
         OutputActionBuilder outputActionBuilder = new OutputActionBuilder();
         Uri outputActionUri = new Uri(OutputPortValues.CONTROLLER.toString());
+        // hardcoded for now
+
         outputActionBuilder.setOutputNodeConnector(outputActionUri);
+        outputActionBuilder.setMaxLength(65535);
 
         ab.setAction(new OutputActionCaseBuilder().setOutputAction(outputActionBuilder.build()).build());
         ab.setOrder(0);

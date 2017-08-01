@@ -43,7 +43,7 @@ public class CreateRouteImpl implements CloudshellService {
 
         if (allow) {
             this.flowProcessingService.createOutputControlleFlow(srcSwitch, srcPort);
-//            this.flowProcessingService.createOutputControlleFlow(dstSwitch, dstPort);
+            this.flowProcessingService.createOutputControlleFlow(dstSwitch, dstPort);
 
             this.fileRouteProcessingService.createRouteFile(srcSwitch, srcPort, srcRules);
             this.fileRouteProcessingService.createRouteFile(dstSwitch, dstPort, dstRules);
