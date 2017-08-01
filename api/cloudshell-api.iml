@@ -14,6 +14,14 @@
     <orderEntry type="library" name="Maven: org.opendaylight.mdsal:yang-binding:0.10.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.yangtools:concepts:1.1.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.yangtools:util:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-common:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:object-cache-api:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-simple:1.7.21" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:annotations:3.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt:org.eclipse.jdt.annotation:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:yang-binding:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:concepts:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:util:1.1.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: com.github.romix:java-concurrent-hash-trie-map:0.2.23-ODL" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-common:1.1.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.yangtools:object-cache-api:1.1.1-Carbon" level="project" />

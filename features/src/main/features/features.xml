@@ -33,6 +33,8 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
     <feature version='${project.version}'>odl-cloudshell-api</feature>
     <bundle>mvn:quali/cloudshell-impl/{{VERSION}}</bundle>
+    <bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
+
   </feature>
   <feature name='odl-cloudshell-rest' version='${project.version}' description='OpenDaylight :: cloudshell :: REST'>
     <feature version="${project.version}">odl-cloudshell</feature>

@@ -45,10 +45,13 @@ import java.util.List;
 
 public class FlowProcessingService {
     private static final String CTRL_RULE_PREFIX = "cloudshell-ctrl-rule";
-    private static final Integer DROP_RULE_PRIORITY = 510;
     private static final Integer OUTPUT_RULE_PRIORITY = 1010;
-    private static final Integer OUTPUT_RULE_TIMEOUT = 0;
+    private static final Integer OUTPUT_RULE_TIMEOUT = 100;
     private static final Integer DROP_RULE_TIMEOUT = 0;
+    private static final Integer DROP_RULE_PRIORITY = 510;
+    private static final Integer CTRL_RULE_TIMEOUT = 0;
+    private static final Integer CTRL_RULE_PRIORITY = 900;
+
     private final static Logger LOG = LoggerFactory.getLogger(FlowProcessingService.class);
     private static final byte[] ETH_TYPE_IPV4 = new byte[] { 0x08, 0x00 };
     private final SalFlowService salFlowService;
@@ -129,78 +132,6 @@ public class FlowProcessingService {
         this.salFlowService.addFlow(flowBuilder.build());
     }
 
-    public void removeDropActionFlow(String nodeId, Integer port, String srcMac, String dstMac) {
-        System.out.println("REMOVE BUILT DROp FLOW START !!!! >>>>>>>>");
-        RemoveFlowInputBuilder flowBuilder = new RemoveFlowInputBuilder();
-
-
-        InstanceIdentifier<Node> nodeIdRef = InstanceIdentifier.builder(Nodes.class).child(Node.class,
-                new NodeKey(new NodeId(nodeId))).build();
-
-        flowBuilder.setNode(new NodeRef(nodeIdRef));
-
-        flowBuilder.setBarrier(true);
-        flowBuilder.setTableId((short) 0);
-//        flowBuilder.setInstallHw(Boolean.TRUE);
-        flowBuilder.setPriority(DROP_RULE_PRIORITY);
-        flowBuilder.setFlowName(String.join("-", CTRL_RULE_PREFIX, nodeId, port.toString()));
-        flowBuilder.setIdleTimeout(DROP_RULE_TIMEOUT);
-
-        NodeConnectorId inPortNodeConnectorId = new NodeConnectorId(nodeId + ":" + port.toString());
-
-        // set match
-        MatchBuilder matchBuilder = new MatchBuilder();
-//        matchBuilder.setInPort(inPortNodeConnectorId);
-        // todo: check 1 -> create rules without nodes and ports
-        // todo: check 2 -> remove rules for all nodes for given src and dst -> first hardcode it
-
-        EthernetMatchBuilder ethernetMatchBuilder = new EthernetMatchBuilder();
-        EthernetSourceBuilder ethernetSourceBuilder = new EthernetSourceBuilder();
-        ethernetSourceBuilder.setAddress(new MacAddress(srcMac));
-        ethernetMatchBuilder.setEthernetSource(ethernetSourceBuilder.build());
-
-        EthernetDestinationBuilder ethernetDestinationBuilder = new EthernetDestinationBuilder();
-        ethernetDestinationBuilder.setAddress(new MacAddress(dstMac));
-        ethernetMatchBuilder.setEthernetDestination(ethernetDestinationBuilder.build());
-
-        ethernetMatchBuilder.setEthernetType(new EthernetTypeBuilder()
-                .setType(new EtherType((long) 0x800))
-                .build());
-        matchBuilder.setEthernetMatch(ethernetMatchBuilder.build());
-        matchBuilder.setEthernetMatch(ethernetMatchBuilder.build());
-
-
-        flowBuilder.setMatch(matchBuilder.build());
-
-        InstructionBuilder ib = new InstructionBuilder();
-        List<Instruction> instructions = new ArrayList<Instruction>();
-        InstructionsBuilder isb = new InstructionsBuilder();
-
-
-        ApplyActionsBuilder applyActionsBuilder= new ApplyActionsBuilder();
-        List<Action> actionList = new ArrayList<Action>();
-        ActionBuilder ab = new ActionBuilder();
-
-        ab.setAction(new DropActionCaseBuilder().build());
-        ab.setOrder(0);
-        ab.setKey(new ActionKey(0));
-        actionList.add(ab.build()); // now action list is ready
-
-        //apply the actions
-        applyActionsBuilder.setAction(actionList);
-
-        // now wrap it into instructions
-        ib.setInstruction(new ApplyActionsCaseBuilder().setApplyActions(applyActionsBuilder.build()).build());
-        ib.setOrder(0);
-        instructions.add(ib.build());
-        isb.setInstruction(instructions);
-        flowBuilder.setInstructions(isb.build());
-
-        System.out.println("REMOVE BUILT DROP FLOW DONE>>>>>>>>");
-
-        this.salFlowService.removeFlow(flowBuilder.build());
-    }
-
     public void createOutputActionFlow(String nodeId, Integer inPort, Integer outPort, String srcMac, String dstMac) {
         System.out.println("BUILT OUTPUT FLOW START !!!! >>>>>>>>");
         AddFlowInputBuilder flowBuilder = new AddFlowInputBuilder();
@@ -273,6 +204,65 @@ public class FlowProcessingService {
         flowBuilder.setInstructions(isb.build());
 
         System.out.println("ADD BUILT DROP FLOW DONE>>>>>>>>");
+
+        this.salFlowService.addFlow(flowBuilder.build());
+    }
+
+    public void createOutputControlleFlow(String nodeId, Integer inPort) {
+        System.out.println("BUILT OUTPUT CONTROLLER FLOW START !!!! >>>>>>>>");
+        AddFlowInputBuilder flowBuilder = new AddFlowInputBuilder();
+
+
+        InstanceIdentifier<Node> nodeIdRef = InstanceIdentifier.builder(Nodes.class).child(Node.class,
+                new NodeKey(new NodeId(nodeId))).build();
+
+        flowBuilder.setNode(new NodeRef(nodeIdRef));
+
+        flowBuilder.setBarrier(true);
+        flowBuilder.setTableId((short) 0);
+
+        NodeConnectorId inPortNodeConnectorId = new NodeConnectorId(nodeId + ":" + inPort.toString());
+
+        flowBuilder.setPriority(CTRL_RULE_PRIORITY);
+        flowBuilder.setFlowName(String.join("-", CTRL_RULE_PREFIX, nodeId, inPort.toString()));
+        flowBuilder.setIdleTimeout(CTRL_RULE_TIMEOUT);
+
+        // set match
+        MatchBuilder matchBuilder = new MatchBuilder();
+        matchBuilder.setInPort(inPortNodeConnectorId);
+
+        flowBuilder.setMatch(matchBuilder.build());
+
+        InstructionBuilder ib = new InstructionBuilder();
+        List<Instruction> instructions = new ArrayList<Instruction>();
+        InstructionsBuilder isb = new InstructionsBuilder();
+
+
+        ApplyActionsBuilder applyActionsBuilder= new ApplyActionsBuilder();
+        List<Action> actionList = new ArrayList<Action>();
+        ActionBuilder ab = new ActionBuilder();
+
+
+        OutputActionBuilder outputActionBuilder = new OutputActionBuilder();
+        Uri outputActionUri = new Uri(OutputPortValues.CONTROLLER.toString());
+        outputActionBuilder.setOutputNodeConnector(outputActionUri);
+
+        ab.setAction(new OutputActionCaseBuilder().setOutputAction(outputActionBuilder.build()).build());
+        ab.setOrder(0);
+        ab.setKey(new ActionKey(0));
+        actionList.add(ab.build()); // now action list is ready
+
+        //apply the actions
+        applyActionsBuilder.setAction(actionList);
+
+        // now wrap it into instructions
+        ib.setInstruction(new ApplyActionsCaseBuilder().setApplyActions(applyActionsBuilder.build()).build());
+        ib.setOrder(0);
+        instructions.add(ib.build());
+        isb.setInstruction(instructions);
+        flowBuilder.setInstructions(isb.build());
+
+        System.out.println("ADD BUILT CONTROLLER OUTPUT FLOW DONE>>>>>>>>");
 
         this.salFlowService.addFlow(flowBuilder.build());
     }

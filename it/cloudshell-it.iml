@@ -138,7 +138,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.opendaylight.controller:sal-clustering-commons:1.5.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.typesafe.akka:akka-osgi_2.11:2.4.18" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.compendium:5.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.dropwizard.metrics:metrics-core:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.dropwizard.metrics:metrics-graphite:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.protobuf:protobuf-java:2.5.0" level="project" />
@@ -283,6 +282,9 @@
     <orderEntry type="library" name="Maven: org.opendaylight.dluxapps:yangutils-bundle:0.5.1-Carbon" level="project" />
     <orderEntry type="module" module-name="cloudshell-impl" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.model:model-flow-service:0.4.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.felix:org.apache.felix.utils:1.9.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.compendium:5.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jgrapht:jgrapht-jdk1.5:0.7.3" level="project" />
     <orderEntry type="module" module-name="cloudshell-api" />
     <orderEntry type="module" module-name="cloudshell-cli" />
     <orderEntry type="library" name="Maven: org.apache.karaf.shell:org.apache.karaf.shell.console:3.0.8" level="project" />
@@ -293,6 +295,20 @@
     <orderEntry type="library" name="Maven: org.apache.felix:org.apache.felix.fileinstall:3.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.sshd:sshd-core:0.14.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.karaf.shell:org.apache.karaf.shell.table:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.packethandler:packethandler-model:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.packethandler:packethandler-impl:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.addresstracker:addresstracker-model:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.addresstracker:addresstracker-impl:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.loopremover:loopremover-model:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.loopremover:loopremover-impl:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller.thirdparty:net.sf.jung2:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.jung:jung-api:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.jung:jung-graph-impl:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.collections:collections-generic:4.01" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.hosttracker:hosttracker-model:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.hosttracker:hosttracker-impl:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.main:main-impl:0.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.l2switch.arphandler:arphandler-impl:0.5.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-api:0.9.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-spi:0.9.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowjava:openflow-protocol-impl:0.9.1-Carbon" level="project" />
@@ -322,12 +338,12 @@
     <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin:openflowplugin-common:0.4.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:bulk-o-matic:0.4.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.openflowplugin.applications:notification-supplier:0.4.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:mdsal-it-base:1.5.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:config-it-base:0.6.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.controller:config-util:0.6.1-Carbon" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf:org.apache.karaf.main:3.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf:org.apache.karaf.util:3.0.8" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.felix:org.apache.felix.utils:1.8.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf:org.apache.karaf.exception:3.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf:org.apache.karaf.client:3.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.karaf.jaas:org.apache.karaf.jaas.boot:3.0.8" level="project" />

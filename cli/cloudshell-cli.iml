@@ -10,6 +10,56 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:yang-binding:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:util:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.karaf.shell:org.apache.karaf.shell.console:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.karaf.jaas:org.apache.karaf.jaas.modules:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.karaf.jaas:org.apache.karaf.jaas.config:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.karaf.shell:org.apache.karaf.shell.table:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-common:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:concepts:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:object-cache-api:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:config-api:0.6.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-binding-config:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-binding-api:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-common-api:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-data-api:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-dom-config:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-core-api:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-model-api:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-dom-api:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-core-spi:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-singleton-dom-impl:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-common-api:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-eos-dom-api:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-eos-common-api:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-singleton-common-api:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-binding-broker-impl:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-binding-util:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-broker-impl:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: com.lmax:disruptor:3.3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-dom-broker:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-dom-spi:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-dom-inmemory-datastore:2.2.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-inmemory-datastore:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-common-impl:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.controller:sal-common-util:1.5.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-data-util:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-binding-generator-impl:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-binding-generator-util:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-parser-impl:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-parser-api:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-data-impl:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.yangtools:yang-model-util:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-binding-dom-codec:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal:mdsal-binding-generator-api:0.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal.model:ietf-yang-types-20130715:2013.07.15.10.1-Carbon" level="project" />
+    <orderEntry type="library" name="Maven: org.opendaylight.mdsal.model:ietf-type-util:1.1.1-Carbon" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-simple:1.7.21" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:annotations:3.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt:org.eclipse.jdt.annotation:2.0.0" level="project" />
     <orderEntry type="module" module-name="cloudshell-api" />
     <orderEntry type="library" name="Maven: org.opendaylight.mdsal:yang-binding:0.10.1-Carbon" level="project" />
     <orderEntry type="library" name="Maven: org.opendaylight.yangtools:util:1.1.1-Carbon" level="project" />
