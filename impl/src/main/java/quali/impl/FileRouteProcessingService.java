@@ -57,7 +57,6 @@ public class FileRouteProcessingService {
                 File currentFile = new File(routesDir.getPath(), s);
                 currentFile.delete();
             }
-            routesDir.delete();
         } else {
             routesDir.mkdir();
         }
