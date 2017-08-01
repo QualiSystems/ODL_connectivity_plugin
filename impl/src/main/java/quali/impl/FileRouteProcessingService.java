@@ -16,13 +16,11 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
-
 
 
 public class FileRouteProcessingService {
@@ -35,7 +33,7 @@ public class FileRouteProcessingService {
      */
     public void init() {
         this.createRoutesDir();
-        LOG.info("FlowProcessingService Session Initiated");
+        LOG.info("FlowProcessingService Initiated");
     }
 
     /**
@@ -46,11 +44,9 @@ public class FileRouteProcessingService {
     }
 
     private void createRoutesDir() {
-        System.out.println("createRoutesDir !!!!: " + ROUTES_PATH);
         File routesDir = new File(ROUTES_PATH);
         // delete existing rotes on start
         if (routesDir.exists()) {
-            System.out.println("FOLDER EXISTS !!!!: " + routesDir.toString() + "FULL PATH: " + routesDir.getAbsolutePath());
             String[]entries = routesDir.list();
 
             for(String s: entries){
@@ -117,37 +113,13 @@ public class FileRouteProcessingService {
                 rules.add(new Rule(portIn, portOut, nodeId));
             }
         } catch (FileNotFoundException e) {
-            System.out.println("JSON DONT WORK UP!");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("JSON DONT WORK UP!");
-
             e.printStackTrace();
         } catch (ParseException e) {
-            System.out.println("JSON DONT WORK UP!");
             e.printStackTrace();
         }
 
         return rules;
-//
-//        for (Object o : jsonArray) {
-//            JSONObject person = (JSONObject) o;
-//
-//            String strName = (String) person.get("name");
-//            System.out.println("Name::::" + strName);
-//
-//            String strCity = (String) person.get("city");
-//            System.out.println("City::::" + strCity);
-//
-//            JSONArray arrays = (JSONArray) person.get("cars");
-//            for (Object object : arrays) {
-//                System.out.println("cars::::" + object);
-//            }
-//            String strJob = (String) person.get("job");
-//            System.out.println("Job::::" + strJob);
-//            System.out.println();
-//
-//        }
-
     }
 }

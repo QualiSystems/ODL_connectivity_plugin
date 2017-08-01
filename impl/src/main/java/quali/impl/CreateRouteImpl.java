@@ -53,39 +53,6 @@ public class CreateRouteImpl implements CloudshellService {
             this.fileRouteProcessingService.deleteRouteFile(dstSwitch, dstPort);
         }
 
-//        if (allow) {
-//
-//            // todo: do it for all nodes between them ---- check if it helps
-//            // for route in routes
-//            for (Route rule: route) {
-//                this.flowProcessingService.createOutputActionFlow(rule.getSwitch(), rule.getPortIn(),
-//                        rule.getPortOut(), srcMac, dstMac);
-//
-//                this.flowProcessingService.createOutputActionFlow(rule.getSwitch(), rule.getPortOut(),
-//                        rule.getPortIn(), dstMac, srcMac);
-//            }
-//
-//
-////            this.flowProcessingService.removeDropActionFlow(nodeId, port, dstMac, srcMac);
-//
-//            // todo: node will not be the same here !!!
-////            this.flowProcessingService.removeDropActionFlow(nodeId, port, dstMac, srcMac);
-////            this.fileRouteProcessingService.createRouteFile(srcMac, dstMac);
-//
-//        } else {
-//            for (Route rule: route) {
-//                this.flowProcessingService.removeOutputActionFlow(rule.getSwitch(), rule.getPortIn(),
-//                        rule.getPortOut(), srcMac, dstMac);
-//
-//                this.flowProcessingService.removeOutputActionFlow(rule.getSwitch(), rule.getPortOut(),
-//                        rule.getPortIn(), dstMac, srcMac);
-//            }
-//
-//            // todo: remove
-////            this.fileRouteProcessingService.deleteRouteFile(srcMac, dstMac);
-////            this.flowProcessingService.createDropActionFlow(nodeId, port, dstMac, srcMac);
-//        }
-
         CreateRouteOutputBuilder createRouteBuilder = new CreateRouteOutputBuilder();
         createRouteBuilder.setSuccess(Boolean.TRUE);
 

@@ -7,7 +7,9 @@
  */
 package quali.impl;
 
-import org.apache.commons.lang3.StringUtils;
+import java.nio.ByteBuffer;
+import java.util.*;
+
 import org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.yang.types.rev130715.MacAddress;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnectorKey;
@@ -15,9 +17,6 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.*;
 import org.opendaylight.yangtools.yang.binding.InstanceIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.ByteBuffer;
-import java.util.*;
 
 
 public class PacketHandler implements PacketProcessingListener {
@@ -38,7 +37,7 @@ public class PacketHandler implements PacketProcessingListener {
      * Method called when the blueprint container is created.
      */
     public void init() {
-        LOG.info("PacketHandler Session Initiated");
+        LOG.info("PacketHandler Initiated");
     }
 
     /**
@@ -86,66 +85,6 @@ public class PacketHandler implements PacketProcessingListener {
 
 
             Class<? extends PacketInReason> pktInReason = packetReceived.getPacketInReason();
-
-            // read src MAC and dst MAC
-            try {
-
-
-                byte[] dstMacRaw = extractDstMac(packetReceived.getPayload());
-                byte[] srcMacRaw = extractSrcMac(packetReceived.getPayload());
-                byte[] etherType = extractEtherType(packetReceived.getPayload());
-
-                MacAddress dstMac = rawMacToMac(dstMacRaw);
-                MacAddress srcMac = rawMacToMac(srcMacRaw);
-                String srcMacVal = srcMac.getValue();
-                String dstMacVal = dstMac.getValue();
-            } catch (Exception e) {
-                System.out.println("================== NOOOOOOO WAAAY 111 ==============");
-                System.out.println("Strange package !!!!");
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-
-                NodeConnectorKey ingressKey = getNodeConnectorKey(packetReceived.getIngress().getValue());
-                String inPort = ingressKey.getId().getValue();
-
-
-                System.out.println("================== Packet DATA ==============");
-                System.out.println("in port: " + inPort);
-                System.out.println("pktInReason: " + pktInReason.toString());
-
-                try {
-                    System.out.println("table ID: " + packetReceived.getTableId().getValue());
-                } catch (Exception e2) {
-                    System.out.println("table ID -- fail");
-                }
-
-                try {
-                    System.out.println("PAyload: " + packetReceived.getPayload().toString());
-                } catch (Exception e2) {
-                    System.out.println("PAyload  -- fail");
-                }
-
-                try {
-                    System.out.println("pkt Match: " + packetReceived.getMatch().toString());
-                } catch (Exception e2) {
-                    System.out.println("pkt Match -- fail");
-                }
-
-                try {
-                    System.out.println("getFlowCookie: " + packetReceived.getFlowCookie().toString());
-                } catch (Exception e2) {
-                    System.out.println("getFlowCookie -- fail");
-                }
-
-                try {
-                    System.out.println("getConnCookie: " + packetReceived.getConnectionCookie().toString());
-                } catch (Exception e2) {
-                    System.out.println("getConnCookie -- fail");
-                }
-
-                System.out.println("================== END PACKET DATA ==============");
-            }
-
             byte[] dstMacRaw = extractDstMac(packetReceived.getPayload());
             byte[] srcMacRaw = extractSrcMac(packetReceived.getPayload());
             byte[] etherType = extractEtherType(packetReceived.getPayload());
@@ -159,7 +98,7 @@ public class PacketHandler implements PacketProcessingListener {
             if (Arrays.equals(ETH_TYPE_IPV4, etherType)) {
 
                 System.out.println("################################################");
-                System.out.println("PACKET NOTIFICATION");
+                System.out.println("ETH_TYPE_IPV4 PACKET NOTIFICATION");
                 System.out.println("################################################");
 
 
@@ -180,7 +119,6 @@ public class PacketHandler implements PacketProcessingListener {
                     System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
                     System.out.println("################################################");
 
-                    // todo: check case for rule dropping when the src and dst MACs will be changed placed <---- in RPC API
                     List<Rule> rules = this.fileRouteProcessingService.getRouteRules(switchId, port);
 
                     for (Rule rule : rules) {
@@ -189,7 +127,6 @@ public class PacketHandler implements PacketProcessingListener {
                     }
 
                 } else {
-
                     System.out.println("################################################");
                     System.out.println("================== PACKET BLOCKED ==============");
                     System.out.println("IN port connector: " + inPort);

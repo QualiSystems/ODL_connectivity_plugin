@@ -14,6 +14,7 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.cloudshe
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class CloudshellProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(CloudshellProvider.class);
@@ -37,7 +38,7 @@ public class CloudshellProvider {
         serviceRegistration = rpcProviderRegistry.addRpcImplementation(CloudshellService.class,
                 new CreateRouteImpl(this.flowProcessingService, this.fileRouteProcessingService));
 
-        LOG.info("CloudshellProvider Session Initiated");
+        LOG.info("CloudshellProvider Initiated");
     }
 
     /**
