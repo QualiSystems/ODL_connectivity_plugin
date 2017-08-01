@@ -44,38 +44,45 @@ public class FileRouteProcessingService {
     }
 
     private void createRoutesDir() {
+        LOG.info("Initializing routes directory...");
         File routesDir = new File(ROUTES_PATH);
         // delete existing rotes on start
         if (routesDir.exists()) {
+            LOG.info("Routes directory already exists, cleanuping existing rules...");
             String[]entries = routesDir.list();
 
             for(String s: entries){
                 File currentFile = new File(routesDir.getPath(), s);
                 currentFile.delete();
+                LOG.info("Cleanuped route file: " + s);
             }
         } else {
             routesDir.mkdir();
         }
+        LOG.info("Initializing routes directory done");
     }
 
     private Boolean writeToFile(String fileName, String data) {
+        LOG.info("Writing route file: " + fileName + " with data: " + data);
         try {
             FileWriter writer = new FileWriter(fileName);
             writer.write(data);
             writer.flush();
             writer.close();
         } catch (IOException e) {
+            LOG.info("Failed to write route file: " + fileName + " with data: " + data);
             e.printStackTrace();
             return Boolean.FALSE;
         }
 
+        LOG.info("Route file: " + fileName + " with data: " + data + " was successfully created");
         return Boolean.TRUE;
     }
 
     private Boolean deleteFile(String fileName) {
+        LOG.info("Deleting route file: " + fileName);
         File f = new File(fileName);
-        f.delete();
-        return Boolean.TRUE;
+        return f.delete();
     }
 
     public Boolean createRouteFile (String switchId, Integer port, String rules) {
@@ -91,12 +98,13 @@ public class FileRouteProcessingService {
         return f.isFile();
     }
     public List<Rule> getRouteRules(String switchId, Integer port) {
-
+        String fileName = switchId + SW_PORT_DELIMETER + port;
+        LOG.info("Parsing JSON rules from the route file: " + fileName);
         List<Rule> rules = new ArrayList<Rule>();
         JSONParser parser = new JSONParser();
 
         try {
-            JSONArray array = (JSONArray) parser.parse(new FileReader(switchId + SW_PORT_DELIMETER + port));
+            JSONArray array = (JSONArray) parser.parse(new FileReader(fileName));
             for (Object o : array)
             {
                 JSONObject person = (JSONObject) o;
@@ -119,6 +127,9 @@ public class FileRouteProcessingService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        LOG.info("JSON Rules from the route file: " + fileName + "were successfully parsed");
+        LOG.info(rules.toString());
 
         return rules;
     }
