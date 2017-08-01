@@ -164,9 +164,9 @@ public class FlowProcessingService {
         ethernetDestinationBuilder.setAddress(new MacAddress(dstMac));
         ethernetMatchBuilder.setEthernetDestination(ethernetDestinationBuilder.build());
 
-        ethernetMatchBuilder.setEthernetType(new EthernetTypeBuilder()
-                .setType(new EtherType((long) 0x800))
-                .build());
+//        ethernetMatchBuilder.setEthernetType(new EthernetTypeBuilder()
+//                .setType(new EtherType((long) 0x800))
+//                .build());
         matchBuilder.setEthernetMatch(ethernetMatchBuilder.build());
         matchBuilder.setEthernetMatch(ethernetMatchBuilder.build());
 
