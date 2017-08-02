@@ -51,6 +51,6 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <!--<service ref="PacketHandler" odl:type="default"-->
   <!--interface="org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.PacketProcessingListener" />-->
 
-  <!--<odl:notification-listener ref="PacketHandler" />-->
+  <odl:notification-listener ref="PacketHandler" />
 
 </blueprint>
