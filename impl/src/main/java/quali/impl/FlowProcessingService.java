@@ -59,7 +59,7 @@ public class FlowProcessingService {
     }
 
     public void createDropActionFlow(String nodeId, Integer port, String srcMac, String dstMac) {
-        LOG.debug(String.format("Creating DROP flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s STARTED",
+        LOG.info(String.format("Creating DROP flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s STARTED",
                 nodeId, port, srcMac, dstMac));
 
         AddFlowInputBuilder flowBuilder = new AddFlowInputBuilder();
@@ -118,12 +118,12 @@ public class FlowProcessingService {
         flowBuilder.setInstructions(isb.build());
 
         this.salFlowService.addFlow(flowBuilder.build());
-        LOG.debug(String.format("Creating DROP flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s DONE",
+        LOG.info(String.format("Creating DROP flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s DONE",
                 nodeId, port, srcMac, dstMac));
     }
 
     public void createOutputActionFlow(String nodeId, Integer inPort, Integer outPort, String srcMac, String dstMac) {
-        LOG.debug(String.format("Creating OUTPUT flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s STARTED",
+        LOG.info(String.format("Creating OUTPUT flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s STARTED",
                 nodeId, inPort, srcMac, dstMac));
 
         AddFlowInputBuilder flowBuilder = new AddFlowInputBuilder();
@@ -186,12 +186,12 @@ public class FlowProcessingService {
         flowBuilder.setInstructions(isb.build());
 
         this.salFlowService.addFlow(flowBuilder.build());
-        LOG.debug(String.format("Creating OUTPUT flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s DONE",
+        LOG.info(String.format("Creating OUTPUT flow for nodeId: %s inPort: %d srcMac: %s dstMac: %s DONE",
                 nodeId, inPort, srcMac, dstMac));
     }
 
     public void createOutputControlleFlow(String nodeId, Integer inPort) {
-        LOG.debug(String.format("Creating CONTROLLER flow for nodeId: %s inPort: %d STARTED", nodeId, inPort));
+        LOG.info(String.format("Creating CONTROLLER flow for nodeId: %s inPort: %d STARTED", nodeId, inPort));
 
         AddFlowInputBuilder flowBuilder = new AddFlowInputBuilder();
 
@@ -242,7 +242,7 @@ public class FlowProcessingService {
         flowBuilder.setInstructions(isb.build());
 
         this.salFlowService.addFlow(flowBuilder.build());
-        LOG.debug(String.format("Creating CONTROLLER flow for nodeId: %s inPort: %d DONE", nodeId, inPort));
+        LOG.info(String.format("Creating CONTROLLER flow for nodeId: %s inPort: %d DONE", nodeId, inPort));
     }
 
     /**

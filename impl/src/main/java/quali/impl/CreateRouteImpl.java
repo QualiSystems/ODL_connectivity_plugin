@@ -36,7 +36,7 @@ public class CreateRouteImpl implements CloudshellService {
 
     @Override
     public Future<RpcResult<CreateRouteOutput>> createRoute(CreateRouteInput input) {
-        LOG.debug("Creating new route...");
+        LOG.info("Creating new route...");
 
         String srcSwitch = input.getSrcSwitch();
         Integer srcPort = input.getSrcPort();
@@ -48,15 +48,15 @@ public class CreateRouteImpl implements CloudshellService {
 
 
         if (allow) {
-            LOG.debug("Route type is allow, creating controller rules");
+            LOG.info("Route type is allow, creating controller rules");
             this.flowProcessingService.createOutputControlleFlow(srcSwitch, srcPort);
             this.flowProcessingService.createOutputControlleFlow(dstSwitch, dstPort);
-            LOG.debug("Route type is allow, creating route files");
+            LOG.info("Route type is allow, creating route files");
             this.fileRouteProcessingService.createRouteFile(srcSwitch, srcPort, srcRules);
             this.fileRouteProcessingService.createRouteFile(dstSwitch, dstPort, dstRules);
             // todo: add
         } else {
-            LOG.debug("Route type is allow, deleting controller rules");
+            LOG.info("Route type is allow, deleting controller rules");
             this.fileRouteProcessingService.deleteRouteFile(srcSwitch, srcPort);
             this.fileRouteProcessingService.deleteRouteFile(dstSwitch, dstPort);
         }
@@ -64,7 +64,7 @@ public class CreateRouteImpl implements CloudshellService {
         CreateRouteOutputBuilder createRouteBuilder = new CreateRouteOutputBuilder();
         createRouteBuilder.setSuccess(Boolean.TRUE);
 
-        LOG.debug("New route was successfully created");
+        LOG.info("New route was successfully created");
 
         return RpcResultBuilder.success(createRouteBuilder.build()).buildFuture();
     }
