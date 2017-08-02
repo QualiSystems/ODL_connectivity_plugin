@@ -11,7 +11,9 @@
 .mtj.tmp/
 
 # IntelliJ IDEA
-.idea/*
+.idea
+
+*.iml
 
 *target/*
 
