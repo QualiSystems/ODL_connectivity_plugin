@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.opendaylight.mdsal:mdsal-binding2-generator-util:0.10.1-Carbon">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/mdsal/mdsal-binding2-generator-util/0.10.1-Carbon/mdsal-binding2-generator-util-0.10.1-Carbon.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/mdsal/mdsal-binding2-generator-util/0.10.1-Carbon/mdsal-binding2-generator-util-0.10.1-Carbon-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/mdsal/mdsal-binding2-generator-util/0.10.1-Carbon/mdsal-binding2-generator-util-0.10.1-Carbon-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

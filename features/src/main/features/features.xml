@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- vi: set et smarttab sw=4 tabstop=4: -->
 <!--
-Copyright © 2017 Qualisystems and others. All rights reserved.
+Copyright © 2016 Qualisystems and others. All rights reserved.
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License v1.0 which accompanies this distribution,
@@ -14,27 +14,15 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <repository>mvn:org.opendaylight.controller/features-mdsal/{{VERSION}}/xml/features</repository>
   <repository>mvn:org.opendaylight.mdsal.model/features-mdsal-model/{{VERSION}}/xml/features</repository>
   <repository>mvn:org.opendaylight.netconf/features-restconf/{{VERSION}}/xml/features</repository>
-  <repository>mvn:org.opendaylight.dluxapps/features-dluxapps/{{VERSION}}/xml/features</repository>
-
-
-  <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/{{VERSION}}/xml/features</repository>
-  <repository>mvn:org.opendaylight.l2switch/features-l2switch/{{VERSION}}/xml/features</repository>
-
-
+  <repository>mvn:org.opendaylight.dlux/features-dlux/{{VERSION}}/xml/features</repository>
   <feature name='odl-cloudshell-api' version='${project.version}' description='OpenDaylight :: cloudshell :: api'>
     <feature version='${mdsal.model.version}'>odl-mdsal-models</feature>
     <bundle>mvn:quali/cloudshell-api/{{VERSION}}</bundle>
   </feature>
   <feature name='odl-cloudshell' version='${project.version}' description='OpenDaylight :: cloudshell'>
-    <feature version='${openflowplugin.version}'>odl-openflowplugin-flow-services</feature>
-    <feature version='${l2switch.version}'>odl-l2switch-switch-ui</feature>
-
-
     <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
     <feature version='${project.version}'>odl-cloudshell-api</feature>
     <bundle>mvn:quali/cloudshell-impl/{{VERSION}}</bundle>
-    <bundle>mvn:com.googlecode.json-simple/json-simple/1.1.1</bundle>
-
   </feature>
   <feature name='odl-cloudshell-rest' version='${project.version}' description='OpenDaylight :: cloudshell :: REST'>
     <feature version="${project.version}">odl-cloudshell</feature>
@@ -43,7 +31,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <feature name='odl-cloudshell-ui' version='${project.version}' description='OpenDaylight :: cloudshell :: UI'>
     <feature version="${project.version}">odl-cloudshell-rest</feature>
     <feature version="${restconf.version}">odl-mdsal-apidocs</feature>
-    <feature version="${dluxapps.version}">odl-dluxapps-yangman</feature>
+    <feature version="${dlux.version}">odl-dlux-yangui</feature>
   </feature>
   <feature name='odl-cloudshell-cli' version='${project.version}' description='OpenDaylight :: cloudshell :: CLI'>
     <feature version="${project.version}">odl-cloudshell</feature>

@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- vi: set et smarttab sw=4 tabstop=4: -->
 <!--
-Copyright © 2017 Qualisystems and others. All rights reserved.
+Copyright © 2016 Qualisystems and others. All rights reserved.
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License v1.0 which accompanies this distribution,
 and is available at http://www.eclipse.org/legal/epl-v10.html
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.opendaylight.controller</groupId>
     <artifactId>config-parent</artifactId>
-    <version>0.6.1-Carbon</version>
+    <version>0.5.3-Boron-SR3</version>
     <relativePath/>
   </parent>
 
   <groupId>quali</groupId>
   <artifactId>cloudshell-impl</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <!-- <name> formatting is used by autorelease to parse and notify projects on
-       build failure. Please do not modify this unless you have a good reason. -->
-  <name>ODL :: quali :: ${project.artifactId}</name>
   <packaging>bundle</packaging>
 
   <dependencies>
@@ -32,12 +27,6 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
       <groupId>${project.groupId}</groupId>
       <artifactId>cloudshell-api</artifactId>
       <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>model-flow-service</artifactId>
-      <groupId>org.opendaylight.openflowplugin.model</groupId>
-      <version>0.4.1-Carbon</version>
     </dependency>
 
     <!-- Testing Dependencies -->
@@ -49,18 +38,8 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
 
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
+      <artifactId>mockito-all</artifactId>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>org.apache.felix.utils</artifactId>
-          <version>1.9.0</version>
-      </dependency>
-    <dependency>
-    <groupId>com.googlecode.json-simple</groupId>
-    <artifactId>json-simple</artifactId>
-    <version>1.1.1</version>
-  </dependency>
   </dependencies>
 </project>

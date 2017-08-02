@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloudshell-api" />
+        <module name="cloudshell-cli" />
+        <module name="cloudshell-features" />
+        <module name="cloudshell-impl" />
+        <module name="cloudshell-it" />
+        <module name="cloudshell-karaf" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloudshell-aggregator" target="1.8" />
+      <module name="cloudshell-api" target="1.8" />
+      <module name="cloudshell-artifacts" target="1.5" />
+      <module name="cloudshell-cli" target="1.8" />
+      <module name="cloudshell-features" target="1.8" />
+      <module name="cloudshell-impl" target="1.8" />
+      <module name="cloudshell-it" target="1.8" />
+      <module name="cloudshell-karaf" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

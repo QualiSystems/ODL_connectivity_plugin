@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloudshell-aggregator.iml" filepath="$PROJECT_DIR$/cloudshell-aggregator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/cloudshell-api.iml" filepath="$PROJECT_DIR$/api/cloudshell-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/artifacts/cloudshell-artifacts.iml" filepath="$PROJECT_DIR$/artifacts/cloudshell-artifacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cli/cloudshell-cli.iml" filepath="$PROJECT_DIR$/cli/cloudshell-cli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/cloudshell-features.iml" filepath="$PROJECT_DIR$/features/cloudshell-features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/impl/cloudshell-impl.iml" filepath="$PROJECT_DIR$/impl/cloudshell-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/it/cloudshell-it.iml" filepath="$PROJECT_DIR$/it/cloudshell-it.iml" />
+      <module fileurl="file://$PROJECT_DIR$/karaf/cloudshell-karaf.iml" filepath="$PROJECT_DIR$/karaf/cloudshell-karaf.iml" />
+    </modules>
+  </component>
+</project>

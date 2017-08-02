@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.opendaylight.dluxapps:sigmatopology-bundle:0.5.1-Carbon">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/dluxapps/sigmatopology-bundle/0.5.1-Carbon/sigmatopology-bundle-0.5.1-Carbon.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/dluxapps/sigmatopology-bundle/0.5.1-Carbon/sigmatopology-bundle-0.5.1-Carbon-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/opendaylight/dluxapps/sigmatopology-bundle/0.5.1-Carbon/sigmatopology-bundle-0.5.1-Carbon-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
