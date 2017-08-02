@@ -32,6 +32,8 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
     <yangtools.version>1.0.3-Boron-SR3</yangtools.version>
     <dlux.version>0.4.3-Boron-SR3</dlux.version>
     <configfile.directory>etc/opendaylight/karaf</configfile.directory>
+    <l2switch.version>0.4.3-Boron-SR3</l2switch.version>
+
   </properties>
 
   <dependencyManagement>
@@ -114,5 +116,14 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
       <artifactId>cloudshell-cli</artifactId>
       <version>${project.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.opendaylight.l2switch</groupId>
+      <artifactId>features-l2switch</artifactId>
+      <version>${l2switch.version}</version>
+      <classifier>features</classifier>
+      <type>xml</type>
+    </dependency>
+
   </dependencies>
 </project>
