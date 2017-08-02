@@ -129,24 +129,6 @@ public class PacketHandler implements PacketProcessingListener {
                 System.out.println("ETH_TYPE_IPV4 PACKET NOTIFICATION");
                 System.out.println("################################################");
 
-//                if (this.fileRouteProcessingService.isRouteExists(switchId, port)) {
-//
-//                    System.out.println("################################################");
-//                    System.out.println("================== packet allowed ==============");
-//                    System.out.println("IN port connector: " + inPort);
-//                    System.out.println("Received packet from MAC match: " + srcMac);
-//                    System.out.println("Received packet to MAC match: " + dstMac);
-//                    System.out.println("Ethertype: " + Integer.toHexString(0x0000ffff & ByteBuffer.wrap(etherType).getShort()));
-//                    System.out.println("################################################");
-//
-//                    List<Rule> rules = this.fileRouteProcessingService.getRouteRules(switchId, port);
-//
-//                    for (Rule rule : rules) {
-//                        this.flowProcessingService.createOutputActionFlow(rule.switchId, rule.portIn.intValue(),
-//                                rule.portOut.intValue(), srcMacVal, dstMacVal);
-//                    }
-//
-//                } else {
                     System.out.println("################################################");
                     System.out.println("================== PACKET BLOCKED ==============");
                     System.out.println("IN port connector: " + inPort);
@@ -157,7 +139,6 @@ public class PacketHandler implements PacketProcessingListener {
 
                     this.flowProcessingService.createDropActionFlow(switchId, port, srcMacVal, dstMacVal);
 
-//                }
             }
 
         } catch (Exception e) {
