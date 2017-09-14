@@ -34,6 +34,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
     <configfile.directory>etc/opendaylight/karaf</configfile.directory>
     <l2switch.version>0.4.3-Boron-SR3</l2switch.version>
     <openflowplugin.version>0.3.3-Boron-SR3</openflowplugin.version>
+    <vtn.version>0.5.3-Boron-SR3</vtn.version>
   </properties>
 
   <dependencyManagement>
@@ -121,6 +122,14 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
       <groupId>org.opendaylight.l2switch</groupId>
       <artifactId>features-l2switch</artifactId>
       <version>${l2switch.version}</version>
+      <classifier>features</classifier>
+      <type>xml</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.opendaylight.vtn</groupId>
+      <artifactId>features-vtn-manager</artifactId>
+      <version>${vtn.version}</version>
       <classifier>features</classifier>
       <type>xml</type>
     </dependency>

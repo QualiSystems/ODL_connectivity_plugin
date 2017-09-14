@@ -21,6 +21,9 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <odl:rpc-service id="salFlowService"
      interface="org.opendaylight.yang.gen.v1.urn.opendaylight.flow.service.rev130819.SalFlowService" />
 
+  <odl:rpc-service id="VtnVlanMapService"
+     interface="org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.vlan.rev150907.VtnVlanMapService" />
+
   <bean id="FlowProcessingService"
         class="quali.impl.FlowProcessingService"
         init-method="init" destroy-method="close">
@@ -46,6 +49,8 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
         init-method="init" destroy-method="close">
     <argument ref="FlowProcessingService" />
     <argument ref="FileRouteProcessingService" />
+    <argument ref="VtnVlanMapService" />
+    <argument ref="dataBroker" />
   </bean>
 
   <!--<service ref="PacketHandler" odl:type="default"-->
