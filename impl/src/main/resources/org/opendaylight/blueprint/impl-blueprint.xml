@@ -8,24 +8,32 @@ terms of the Eclipse Public License v1.0 which accompanies this distribution,
 and is available at http://www.eclipse.org/legal/epl-v10.html
 -->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-  xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0"
-  odl:use-default-for-reference-types="true">
+           xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0"
+           odl:use-default-for-reference-types="true">
 
-  <reference id="dataBroker"
-    interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
-    odl:type="default" />
+    <reference id="dataBroker"
+               interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
+               odl:type="default"/>
 
-  <odl:rpc-service id="VtnVlanMapService"
-     interface="org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.vlan.rev150907.VtnVlanMapService" />
+    <odl:rpc-service id="VtnVbridgeService"
+                     interface="org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.VtnVbridgeService"/>
 
-  <bean id="PacketHandler"
-        class="quali.impl.PacketHandler"
-        init-method="init"
-        destroy-method="close">
-    <argument ref="dataBroker" />
-    <argument ref="VtnVlanMapService" />
-  </bean>
+    <odl:rpc-service id="VtnVinterfaceService"
+                     interface="org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vinterface.rev150907.VtnVinterfaceService"/>
 
-  <odl:notification-listener ref="PacketHandler" />
+    <odl:rpc-service id="VtnPortMapService"
+                     interface="org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.port.rev150907.VtnPortMapService"/>
+
+    <bean id="PacketHandler"
+          class="quali.impl.PacketHandler"
+          init-method="init"
+          destroy-method="close">
+        <argument ref="dataBroker"/>
+        <argument ref="VtnVbridgeService"/>
+        <argument ref="VtnVinterfaceService"/>
+        <argument ref="VtnPortMapService"/>
+    </bean>
+
+    <odl:notification-listener ref="PacketHandler"/>
 
 </blueprint>

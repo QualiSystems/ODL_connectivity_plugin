@@ -12,8 +12,14 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.Formatter;
 import java.util.List;
-
 import com.google.common.base.Optional;
+
+import org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.NodeId;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.port.rev150907.SetPortMapInput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.port.rev150907.SetPortMapInputBuilder;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.UpdateVbridgeInput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vinterface.rev150907.UpdateVinterfaceInput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vinterface.rev150907.UpdateVinterfaceInputBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.opendaylight.controller.md.sal.binding.api.DataBroker;
@@ -24,7 +30,7 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.No
 import org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnectorKey;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.PacketProcessingListener;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.packet.service.rev130709.PacketReceived;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.vlan.rev150907.AddVlanMapInput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.l2.types.rev130827.VlanId;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.rev150328.vtns.VtnKey;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.vtn.vbridge.list.Vbridge;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.vtn.vbridge.list.VbridgeKey;
@@ -32,24 +38,32 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vinterface.rev150907.vt
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.rev150328.vtns.Vtn;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.rev150328.Vtns;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.types.rev150209.VnodeName;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.vlan.rev150907.AddVlanMapInputBuilder;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.vlan.rev150907.VtnVlanMapService;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.l2.types.rev130827.VlanId;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.UpdateVbridgeInputBuilder;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vbridge.rev150907.VtnVbridgeService;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.vinterface.rev150907.VtnVinterfaceService;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.vtn.mapping.port.rev150907.VtnPortMapService;
 
 
 public class PacketHandler implements PacketProcessingListener {
 
-    private final VtnVlanMapService vtnVlanMapService;
     private final DataBroker dataBroker;
+    private final VtnVbridgeService vtnVbridgeService;
+    private final VtnVinterfaceService vtnVinterfaceService;
+    private final VtnPortMapService vtnPortMapService;
     private final static Logger LOG = LoggerFactory.getLogger(PacketHandler.class);
     private static final String ETH_TYPE_802_1Q = "8100";
     private static final String VTN_TRUNKS_NAME = "CS_TRUNKS";
     private static final String VBRIDGE_NAME = "CS_VBRIDGE";
 
     public PacketHandler(final DataBroker dataBroker,
-                         final VtnVlanMapService vtnVlanMapService) {
+                         final VtnVbridgeService vtnVbridgeService,
+                         final VtnVinterfaceService vtnVinterfaceService,
+                         final VtnPortMapService vtnPortMapService) {
+
         this.dataBroker = dataBroker;
-        this.vtnVlanMapService = vtnVlanMapService;
+        this.vtnVbridgeService = vtnVbridgeService;
+        this.vtnVinterfaceService = vtnVinterfaceService;
+        this.vtnPortMapService = vtnPortMapService;
     }
 
     /**
@@ -116,27 +130,53 @@ public class PacketHandler implements PacketProcessingListener {
 
                 if (data.isPresent()) {
                     LOG.info(String.format("Trunks VTN '%s' is present. Checking whether incoming node %s " +
-                            "is a trunk or not", inPort, VTN_TRUNKS_NAME));
+                            "is a trunk port or not", inPort, VTN_TRUNKS_NAME));
 
                     Vbridge vbridgeData = data.get();
                     List<Vinterface> ifaces = vbridgeData.getVinterface();
 
-                    for(Vinterface iface : ifaces)  {
-                        String mappedPort = iface.getVinterfaceStatus().getMappedPort().getValue();
+                    for(Vinterface currIface : ifaces)  {
+                        String mappedPort = currIface.getVinterfaceStatus().getMappedPort().getValue();
 
                         if (inPort.equals(mappedPort)) {
-                            LOG.info(String.format("Incoming node %s is a trunk. Adding VLAN %d to the trunks VTN '%s'",
-                                    inPort, vlan, VTN_TRUNKS_NAME));
+                            LOG.info(String.format("Incoming node %s is a trunk. Adding vBridge '%d' to trunks " +
+                                    "VTN '%s'", inPort, vlan, VTN_TRUNKS_NAME));
 
-                            AddVlanMapInput input = new AddVlanMapInputBuilder()
-                                    .setVlanId(new VlanId(vlan))
+                            String vBridgeName = vlan.toString();
+
+                            UpdateVbridgeInput updateVbridgeInput = new UpdateVbridgeInputBuilder()
                                     .setTenantName(VTN_TRUNKS_NAME)
-                                    .setBridgeName(VBRIDGE_NAME)
+                                    .setBridgeName(vBridgeName)
                                     .build();
 
-                            this.vtnVlanMapService.addVlanMap(input);
-                            // todo: if status code == 409 (conflict) - then delete vlan-map from the CS_TRUNKS
-                            // todo: should be done on the python side NO !!!!?? ITS WORK??
+                            this.vtnVbridgeService.updateVbridge(updateVbridgeInput);
+
+                            // add all interfaces from trunks VTN to VLAN vBridge
+                            for(Vinterface iface : ifaces) {
+                                String ifaceName = iface.getName().getValue();
+                                String portName = iface.getPortMapConfig().getPortName();
+                                NodeId nodeId = iface.getPortMapConfig().getNode();
+
+                                UpdateVinterfaceInput updateVinterfaceInput = new UpdateVinterfaceInputBuilder()
+                                        .setTenantName(VTN_TRUNKS_NAME)
+                                        .setBridgeName(vBridgeName)
+                                        .setInterfaceName(ifaceName)
+                                        .build();
+
+                                this.vtnVinterfaceService.updateVinterface(updateVinterfaceInput);
+
+                                SetPortMapInput setPortMapInput = new SetPortMapInputBuilder()
+                                        .setTenantName(VTN_TRUNKS_NAME)
+                                        .setBridgeName(vBridgeName)
+                                        .setInterfaceName(ifaceName)
+                                        .setNode(nodeId)
+                                        .setPortName(portName)
+                                        .setVlanId(new VlanId(vlan))
+                                        .build();
+
+                                this.vtnPortMapService.setPortMap(setPortMapInput);
+                            }
+                            break;
                         }
                     }
                 }
