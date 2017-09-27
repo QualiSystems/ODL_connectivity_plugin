@@ -1,1 +1,1 @@
-# CloudShell connectivity plugin for the OpenDaylight controller
+CloudShell connectivity plugin for the OpenDaylight controller
